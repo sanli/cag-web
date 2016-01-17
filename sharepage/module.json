@@ -1,0 +1,12 @@
+{
+	"project" : {
+		"template" : "CRUD",
+		"outdir" : "../modules/project",
+		"sysmodule" : false,
+		"options" : {
+			"module_desc" : "项目管理",
+			"url" : "/project",
+			"supportexport" : true
+		}
+	}
+}
