@@ -25,6 +25,7 @@
     "jake": "~0.7.9",
     "jshint": "~2.4.4",
     "lazy": "*",
+    "lodash": "^4.4.0",
     "memory-cache": "0.0.5",
     "method-override": "*",
     "mkdirp": "*",

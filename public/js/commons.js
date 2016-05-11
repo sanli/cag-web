@@ -1068,7 +1068,7 @@ $.extend($M, {
             var uuid = $(event.target).fineUploader('getUuid', id),
                 uploadFileName = uuid + '_' + fileName;
             if(result.success && onUploadSuccess)
-                onUploadSuccess(id, fileName, uploadFileName, result);
+                onUploadSuccess(id, fileName, result);
         });
     };
     
@@ -1099,11 +1099,11 @@ $.extend($M, {
 // 预览基于文件读取，支持简单的编码转换，可以gbk转换为utf-8
 (function($){
     // 接收上传文件，并提供预览
-    function _onUploadFormFileSuccess($el, target, noRemove, container){
+    function _onUploadFormFileSuccess($el, target, noRemove, container, opt){
         noRemove = noRemove || false;
         return function(id, filename, state){
             var isPic = /(.jpg)|(.png)/.test(filename.toLowerCase()),
-              fileurl = window.basePath + '/' + state.url  ;
+              fileurl = '/' + state.url  ;
 
             // 把刚才上传的文件加入到预览
             var thumbnail =[
@@ -1111,15 +1111,18 @@ $.extend($M, {
                 noRemove ? '': '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>' ,
                   '<div style="height: 160px;" class="thumbnail"><a href="' + fileurl + '" target="pic_window">',
                     isPic ? 
-                        '<img src="/hlc/images/loading.png" class="lazy" data-original="' + fileurl + '" style="display: block;max-height: 180px;">' : 
+                        '<img src="/images/loading.png" class="lazy" data-original="' + fileurl + '" style="display: block;max-height: 180px;">' : 
                         '<h2 style="text-align:center;"><span class="glyphicon glyphicon-paperclip"></span></h2><h5 style="text-align: center;">' + filename + '</h5>',
                   '</a></div>',
                 '</div>'
             ];
-            $el.closest('div.panel')
-                .find('div.panel-body')
-                .append(thumbnail.join(''))
-                .find('img.lazy')
+            var $panel = $el.closest('div.panel').find('div.panel-body');
+            if(opt.multi){
+                $panel.append(thumbnail.join(''));
+            }else{
+                $panel.empty().append(thumbnail.join(''));    
+            }
+            $panel.find('img.lazy')
                 .lazyload({
                     container : container,
                     effect : "fadeIn",
@@ -1166,11 +1169,14 @@ $.extend($M, {
             target = $el.data('target'),
             files = opt.files || data[target],
             uploadopt = $.extend({}, { title : $el.data('title')  }, opt.uploader),
-            picRender = _onUploadFormFileSuccess($el, target, false,opt.container);
+            picRender = _onUploadFormFileSuccess($el, target, false, opt.container, opt);
 
         if(!$el.data('bind-uploader')){
-          $el.createUploader( picRender, uploadopt);
-          $el.data('bind-uploader', true )  
+            $el.createUploader( picRender, uploadopt);
+            $el.data('bind-uploader', true );
+            $el.closest('div.uploadpanel').on('click', '[data-dismiss="alert"]', function(e){
+                $(e.target).closest('div.file-block').remove();
+            });
         }
 
         if(!Array.isArray(files)){
@@ -1195,7 +1201,7 @@ $.extend($M, {
             $el = this,
             target = $el.data('target'),
             files = opt.files || data[target],
-            picRender = _onUploadFormFileSuccess($el, target, true,opt.container);
+            picRender = _onUploadFormFileSuccess($el, target, true,opt.container, opt);
 
         if(!Array.isArray(files)){
             files  = [files];

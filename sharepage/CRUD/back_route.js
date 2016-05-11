@@ -49,25 +49,25 @@ exports.bindurl=function(app){
     share.pushview(app, path.join(__dirname, 'view'));
 
     //动态文件
-    share.bindurl(app, '/<$=module_name $>.html', { outType : 'page'}, exports.page);
-    share.bindurl(app, '/<$=module_name $>/create', exports.create);
-    share.bindurl(app, '/<$=module_name $>/update', exports.update);
-    share.bindurl(app, '/<$=module_name $>/list', exports.list);
+    share.bindurl(app, '<$=options.url $>.html', { outType : 'page'}, exports.page);
+    share.bindurl(app, '<$=options.url $>/create', exports.create);
+    share.bindurl(app, '<$=options.url $>/update', exports.update);
+    share.bindurl(app, '<$=options.url $>/list', exports.list);
 <$ if(options.supportnavi){ $>
-    share.bindurl(app, '/<$=module_name $>/listnavi', exports.listnavi);
+    share.bindurl(app, '<$=options.url $>/listnavi', exports.listnavi);
 <$ } $>
-    share.bindurl(app, '/<$=module_name $>/get', exports.get);
-    share.bindurl(app, '/<$=module_name $>/retriveByCond', exports.retriveByCond);
-    share.bindurl(app, '/<$=module_name $>/delete', exports.delete);
-    share.bindurl(app, '/<$=module_name $>/count', exports.count);
+    share.bindurl(app, '<$=options.url $>/get', exports.get);
+    share.bindurl(app, '<$=options.url $>/retriveByCond', exports.retriveByCond);
+    share.bindurl(app, '<$=options.url $>/delete', exports.delete);
+    share.bindurl(app, '<$=options.url $>/count', exports.count);
 <$ if(options.supportimport){ $>
-    share.bindurl(app, '/<$=module_name $>/import', exports.import);
-    share.bindurl(app, '/<$=module_name $>/templ', exports.templ);
+    share.bindurl(app, '<$=options.url $>/import', exports.import);
+    share.bindurl(app, '<$=options.url $>/templ', exports.templ);
 <$ } $>
 <$ if(options.supportexport){ $>
-    share.bindurl(app, '/<$=module_name $>/export', exports.export);
+    share.bindurl(app, '<$=options.url $>/export', exports.export);
 <$ } $>
-    share.bindurl(app, '/<$=module_name $>/dlg/:dlgfile', { outType : 'page'}, exports.dlg);
+    share.bindurl(app, '<$=options.url $>/dlg/:dlgfile', { outType : 'page'}, exports.dlg);
     //TODO: 扩展的API加在下面
     // ...
 }

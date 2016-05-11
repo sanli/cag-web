@@ -1,0 +1,108 @@
+<% include ./inc/f_head.html %>
+    <% include ./inc/f_topnavi.html %>
+        
+        <section id="main" data-layout="layout-1">
+            <% include ./inc/f_sidenavi.html %>
+            
+            <section id="content">
+                <div class="container">                
+                    
+                <%if(uuid === 's1'){%>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>第一讲 序论<small>如何写好灵飞经</small></h2>
+                        </div>
+                        
+                        <div class="card-body card-padding">
+                            <div class="row">
+                                <div class="col-sm-12 m-b-20">
+                                   <iframe style="width : 100% ; height: 480px" src="http://player.youku.com/embed/XMTU0NjE2MjgxMg==" frameborder=0 allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <%}%>
+
+                <%if(uuid === 's2'){%>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>第二讲 横的写法<small>如何写横，起解应该注意什么</small></h2>
+                        </div>
+                        
+                        <div class="card-body card-padding">
+                            <div class="row">
+                                <div class="col-sm-12 m-b-20">
+                                   <iframe style="width : 100% ; height: 480px" src="http://player.youku.com/embed/XMTU0NTQ5NTgwMA==" frameborder=0 allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <%}%>
+
+                <%if(uuid === 's3'){%>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>第三讲 横的组合<small>当字中有太多横画的时候，如何组合他们</small></h2>
+                        </div>
+                        
+                        <div class="card-body card-padding">
+                            <div class="row">
+                                <div class="col-sm-12 m-b-20">
+                                   <iframe style="width : 100% ; height: 480px" src="http://player.youku.com/embed/XMTU0NTUyNjg0NA==" frameborder=0 allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <%}%>
+
+                <%if(uuid === 's4'){%>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>第四讲 长竖的写法<small>长竖是字的精神所在，如何写好</small></h2>
+                        </div>
+                        
+                        <div class="card-body card-padding">
+                            <div class="row">
+                                <div class="col-sm-12 m-b-20">
+                                   <iframe style="width : 100% ; height: 480px" src="http://player.youku.com/embed/XMTU2MTc2NDY0NA==" frameborder=0 allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <%}%>
+                </div>
+            </section>
+        </section>
+
+        
+        <!-- Javascript Libraries -->
+        <script src="/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        
+        <script src="/vendors/bower_components/flot/jquery.flot.js"></script>
+        <script src="/vendors/bower_components/flot/jquery.flot.resize.js"></script>
+        <script src="/vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
+        <script src="/vendors/sparklines/jquery.sparkline.min.js"></script>
+        <script src="/vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+        
+        <script src="/vendors/bower_components/moment/min/moment.min.js"></script>
+        <script src="/vendors/bower_components/fullcalendar/dist/fullcalendar.min.js "></script>
+        <script src="/vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js"></script>
+        <script src="/vendors/bower_components/Waves/dist/waves.min.js"></script>
+        <script src="/vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+        <script src="/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js"></script>
+        <script src="/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+        
+        <!-- Placeholder for IE9 -->
+        <!--[if IE 9 ]>
+            <script src="/vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+        <![endif]-->
+        
+        <script src="/js/flot-charts/curved-line-chart.js"></script>
+        <script src="/js/flot-charts/line-chart.js"></script>
+        <script src="/js/charts.js"></script>
+        
+        <script src="/js/charts.js"></script>
+        <script src="/js/functions.js"></script>
+        <script src="/js/demo.js"></script>
+<% include ./inc/f_foot.html %>

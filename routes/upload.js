@@ -61,28 +61,6 @@ exports.upload = function(req, res) {
     });
 };
 
-var iconv = require('iconv-lite');
-
-exports.preview = function(req, res){
-    var arg = getParam("preview", req, res, [UPLOAD.file, UPLOAD.encode]);
-    if(!arg.passed)
-        return;
-    
-    var filename = settings.uploadpath + '/' + arg.file;
-    fs.readFile(filename, function(err, data){
-        if(err) return rt(false, err.message, res);
-        
-        if(arg.encode.toLowerCase() !== 'utf8'){
-            var content = iconv.fromEncoding(data, "gbk");
-        }else{
-            var content = data.toString();
-        }
-        var p = (content.length > 1024 ? content.substring(0, 1024) + '\n... ...' : content) ;
-        
-        rt(true, {data: p}, res);
-    });
-};
-
 // Mainfunction to recieve and process the file upload data asynchronously
 var uploadFile = function(req, targetdir, callback) {
     var uuid = req.param('qquuid');
@@ -92,11 +70,12 @@ var uploadFile = function(req, targetdir, callback) {
     // and calls the callback with the JSON-data that could be returned.
     var moveToDestination = function(sourcefile, targetfile) {
         console.log('上传文件：'+ targetfile);
+        var url = targetfile.replace(settings.uploadpath, '');
         moveFile(sourcefile, targetfile, function(err) {
-            if(!err)
-                callback({success: true});
-            else
-                callback({success: false, error: err});
+            if(err)
+                return callback({success: false, error: err});
+
+            callback({success: true, url : url });    
         });
     };
 

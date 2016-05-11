@@ -1,12 +1,40 @@
 {
-	"project" : {
+	"age" : {
 		"template" : "CRUD",
-		"outdir" : "../modules/project",
+		"outdir" : "../modules/age",
 		"sysmodule" : false,
+		"comment" : "各个历史年代的相关信息",
 		"options" : {
-			"module_desc" : "项目管理",
-			"url" : "/project",
-			"supportexport" : true
+			"module_desc" : "年代",
+			"url" : "/bg/age",
+			"supportbatchdelete" : true
+		}
+	},
+
+	"author" : {
+		"template" : "CRUD",
+		"outdir" : "../modules/author",
+		"sysmodule" : false,
+		"comment" : "各个作者的相关信息",
+		"options" : {
+			"module_desc" : "作者",
+			"url" : "/bg/author",
+			"supportbatchdelete" : true
+		}
+	},
+
+
+	"media" : {
+		"template" : "CRUD",
+		"outdir" : "../modules/media",
+		"sysmodule" : false,
+		"comment" : "视频课程",
+		"options" : {
+			"module_desc" : "视频课程",
+			"url" : "/bg/media",
+			"supportnavi" : true,
+			"supportbatchdelete" : true
 		}
 	}
+
 }
